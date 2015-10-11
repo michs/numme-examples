@@ -209,6 +209,7 @@ div#notebook {
 <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mf">25.</span><span class="p">,</span><span class="mf">40.</span><span class="p">,</span><span class="mf">50.</span><span class="p">,</span><span class="mf">60.</span><span class="p">])</span> <span class="c"># temperature [°C]</span>
 <span class="n">life</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mf">95.</span><span class="p">,</span><span class="mf">75.</span><span class="p">,</span><span class="mf">63.</span><span class="p">,</span><span class="mf">54.</span><span class="p">])</span> <span class="c"># lifetime    [1000 hours]</span>
 
+<span class="n">x</span> <span class="o">=</span> <span class="n">temp</span>  <span class="c"># convenience</span>
 <span class="c"># temperature range for plotting</span>
 <span class="n">x_pl</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
 </pre></div>
@@ -232,13 +233,12 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
-<span class="n">f_0</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">f_1</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="n">f_2</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">f_1</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">f_2</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="n">f_3</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
-<span class="n">f_0_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_1</span> <span class="o">-</span> <span class="n">f_0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">f_1_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_2</span> <span class="o">-</span> <span class="n">f_1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">f_2_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_3</span> <span class="o">-</span> <span class="n">f_2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="n">f_0_1_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_1_2</span> <span class="o">-</span> <span class="n">f_0_1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">f_1_2_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_2_3</span> <span class="o">-</span> <span class="n">f_1_2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -251,7 +251,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="s">&quot;Coefficients: &quot;</span><span class="p">,</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">f_0_1</span><span class="p">,</span> <span class="n">f_0_1_2</span>
+<div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="s">&quot;Coefficients: &quot;</span><span class="p">,</span> <span class="n">f_1</span><span class="p">,</span> <span class="n">f_1_2</span><span class="p">,</span> <span class="n">f_1_2_3</span>
 </pre></div>
 
 </div>
@@ -278,7 +278,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">L_2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">xi</span><span class="p">:</span> <span class="n">f_0</span> <span class="o">+</span> <span class="n">f_0_1</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">f_0_1_2</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">L_2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">xi</span><span class="p">:</span> <span class="n">f_1</span> <span class="o">+</span> <span class="n">f_1_2</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">f_1_2_3</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -294,7 +294,7 @@ div#notebook {
 <div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="s">&quot;L_2(x)=</span><span class="se">\t</span><span class="si">%.4f</span><span class="s">&quot;</span> \
                <span class="s">&quot;</span><span class="se">\n\t</span><span class="si">%+.4f</span><span class="s">*(x</span><span class="si">%+.2f</span><span class="s">)&quot;</span> \
                <span class="s">&quot;</span><span class="se">\n\t</span><span class="si">%+.4f</span><span class="s">*(x</span><span class="si">%+.2f</span><span class="s">)(x</span><span class="si">%+.2f</span><span class="s">)&quot;</span> \
-      <span class="o">%</span> <span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">f_0_1</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_0_1_2</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+      <span class="o">%</span> <span class="p">(</span><span class="n">f_1</span><span class="p">,</span> <span class="n">f_1_2</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">f_1_2_3</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -374,15 +374,11 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">x</span> <span class="o">=</span> <span class="n">temp</span>
-<span class="n">f_0</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">f_1</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">f_2</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="n">f_3</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="n">f_0</span> <span class="o">=</span> <span class="n">life</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">f_0_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_1</span> <span class="o">-</span> <span class="n">f_0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">f_1_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_2</span> <span class="o">-</span> <span class="n">f_1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">f_2_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_3</span> <span class="o">-</span> <span class="n">f_2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
 <span class="n">f_0_1_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_1_2</span> <span class="o">-</span> <span class="n">f_0_1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">f_1_2_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_2_3</span> <span class="o">-</span> <span class="n">f_1_2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="n">f_0_1_2_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f_1_2_3</span> <span class="o">-</span> <span class="n">f_0_1_2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
